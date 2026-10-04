@@ -1,0 +1,281 @@
+repeat task.wait(0.5) until game:GetService("ReplicatedStorage"):FindFirstChild("Game") and game:GetService("ReplicatedStorage").Game:FindFirstChild("Events") and game:GetService("ReplicatedStorage").Game.Events:FindFirstChild("Remotes")
+
+local P=game:GetService("Players")local R=game:GetService("RunService")local W=game:GetService("Workspace")local RS=game:GetService("ReplicatedStorage")local T=game:GetService("TweenService")local TS=game:GetService("TeleportService")local LP=P.LocalPlayer
+local CG
+if gethui then CG=gethui() elseif game:GetService("CoreGui") then CG=game:GetService("CoreGui") else CG=LP:WaitForChild("PlayerGui") end
+
+pcall(function()
+local BL={[2381645961]=1,[381737648]=1,[1408968062]=1,[1118862586]=1,[309652025]=1,[601414946]=1,[2862223991]=1,[1840644123]=1,[78892455]=1,[985393155]=1,[2421425817]=1,[4930992039]=1,[1453614458]=1,[156629105]=1,[1793048250]=1,[1448900208]=1}
+local KR="Mod Detected what a loser"
+local function kick()pcall(function()LP:Kick(KR)end)task.wait(0.2)pcall(function()TS:Teleport(game.PlaceId,LP)end)end
+if BL[LP.UserId]then kick()return end
+for _,p in ipairs(P:GetPlayers())do if p~=LP and BL[p.UserId]then kick()return end end
+P.PlayerAdded:Connect(function(p)if BL[p.UserId]then task.wait(0.1)kick()end end)
+end)
+
+local Ac=Color3.fromRGB(255,90,120)
+local Aon=Color3.fromRGB(80,220,140)
+local Grn=Color3.fromRGB(85,220,120)
+local Pn=Color3.fromRGB(22,22,28)
+local Bt=Color3.fromRGB(32,32,40)
+local Bh=Color3.fromRGB(48,48,58)
+local Tx=Color3.fromRGB(245,245,250)
+local Sb=Color3.fromRGB(150,150,165)
+local St=Color3.fromRGB(48,48,60)
+local On=Color3.fromRGB(36,54,44)
+local Hdr=Color3.fromRGB(18,18,24)
+
+local NG=Instance.new("ScreenGui",CG)NG.Name="BBN"NG.ResetOnSpawn=false NG.DisplayOrder=9999
+local SY={20,100}local SL={nil,nil}local ES={}
+
+local function nt(t,c,d,ek)
+    d=d or 5
+    if ek then if ES[ek] then return end ES[ek]=true d=7 end
+    pcall(function()
+        local tg=nil
+        for i=1,2 do if SL[i]==nil or not SL[i].Parent then SL[i]=nil tg=i break end end
+        if not tg then
+            local o=SL[1]
+            if o and o.Parent then
+                T:Create(o,TweenInfo.new(0.3,Enum.EasingStyle.Quart,Enum.EasingDirection.In),{Position=UDim2.new(1,340,0,o.Position.Y.Offset),BackgroundTransparency=1}):Play()
+                task.delay(0.3,function() if o and o.Parent then o:Destroy() end end)
+            end
+            SL[1]=SL[2]
+            if SL[1] and SL[1].Parent then T:Create(SL[1],TweenInfo.new(0.35,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Position=UDim2.new(1,-340,0,SY[1])}):Play() end
+            SL[2]=nil tg=2
+        end
+        local f=Instance.new("Frame")f.Size=UDim2.new(0,320,0,72)f.Position=UDim2.new(1,340,0,SY[tg])f.BackgroundColor3=Pn f.BorderSizePixel=0 f.Parent=NG
+        Instance.new("UICorner",f).CornerRadius=UDim.new(0,12)
+        local s=Instance.new("UIStroke",f)s.Color=Ac s.Thickness=1.3 s.Transparency=0.15
+        local a=Instance.new("Frame",f)a.Size=UDim2.new(0,3,1,-16)a.Position=UDim2.new(0,0,0,8)a.BackgroundColor3=Ac a.BorderSizePixel=0 a.ZIndex=3
+        Instance.new("UICorner",a).CornerRadius=UDim.new(0,2)
+        local tl=Instance.new("TextLabel",f)tl.Size=UDim2.new(1,-24,0,20)tl.Position=UDim2.new(0,16,0,10)tl.BackgroundTransparency=1 tl.Font=Enum.Font.GothamBlack tl.TextSize=13 tl.TextColor3=Ac tl.TextXAlignment=Enum.TextXAlignment.Left tl.Text=t tl.ZIndex=2
+        local cl=Instance.new("TextLabel",f)cl.Size=UDim2.new(1,-24,0,32)cl.Position=UDim2.new(0,16,0,32)cl.BackgroundTransparency=1 cl.Font=Enum.Font.GothamMedium cl.TextSize=11 cl.TextColor3=Sb cl.TextXAlignment=Enum.TextXAlignment.Left cl.TextWrapped=true cl.Text=c cl.ZIndex=2
+        local x=Instance.new("TextButton",f)x.Size=UDim2.new(0,22,0,22)x.Position=UDim2.new(1,-28,0,8)x.BackgroundTransparency=1 x.Text="×"x.Font=Enum.Font.GothamBold x.TextSize=15 x.TextColor3=Sb x.ZIndex=2
+        SL[tg]=f
+        T:Create(f,TweenInfo.new(0.45,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Position=UDim2.new(1,-340,0,SY[tg])}):Play()
+        local function dm()
+            if not f or not f.Parent then return end
+            T:Create(f,TweenInfo.new(0.3,Enum.EasingStyle.Quart,Enum.EasingDirection.In),{Position=UDim2.new(1,340,0,f.Position.Y.Offset),BackgroundTransparency=1}):Play()
+            task.wait(0.3)
+            local ri=nil
+            for i=1,2 do if SL[i]==f then SL[i]=nil ri=i end end
+            f:Destroy()
+            if ri==1 and SL[2] then
+                SL[1]=SL[2]SL[2]=nil
+                if SL[1] and SL[1].Parent then T:Create(SL[1],TweenInfo.new(0.35,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Position=UDim2.new(1,-340,0,SY[1])}):Play() end
+            end
+        end
+        x.MouseButton1Click:Connect(dm)task.delay(d,dm)
+    end)
+end
+
+local S={AKG=false,AKL=false,IA=false,AL=false,BD=10,IC=false}
+local IM={Phantom=1,Armory=1}
+local function isI(n)return IM[n]or n:lower():find("phantom")or n:lower():find("armory")end
+local function isL(n)return n:lower():find("lancelot")~=nil end
+local function gR()local c=LP.Character if not c then return nil end return c:FindFirstChild("HumanoidRootPart")or c:FindFirstChild("UpperTorso")or c:FindFirstChild("Torso")end
+local function gW()local c=LP.Character if not c then return nil end for _,t in ipairs(c:GetChildren())do if t:IsA("Tool")then return t end end end
+local function gM(w)if not w then return nil end for _,v in ipairs(w:GetDescendants())do if v.Name=="Muzzle"then return v end end end
+
+local RM={}
+local function gRem()pcall(function()local x=RS.Game.Events.Remotes RM.OnHit=x:FindFirstChild("OnHit")RM.Fire=x:FindFirstChild("Fire")RM.ChangeAmmo=x:FindFirstChild("ChangeAmmo")RM.ShopProcess=x:FindFirstChild("ShopProcess")end)end
+gRem()
+
+local function infA()gRem()if RM.ChangeAmmo then RM.ChangeAmmo:Destroy()RM.ChangeAmmo=nil nt("Inf Ammo","Infinite ammo active")else nt("Inf Ammo","Remote missing",7,"err_noremote")end end
+
+local function gN(oL)local l={}local f=W:FindFirstChild("NPCs")if not f then return l end
+    for _,o in ipairs(f:GetDescendants())do
+        if o:IsA("Model")and not isI(o.Name)and(not oL or isL(o.Name))then
+            local h=o:FindFirstChildOfClass("Humanoid")local r=o:FindFirstChild("HumanoidRootPart")local hd=o:FindFirstChild("Head")
+            if h and h.Health>0 and r and hd then table.insert(l,{model=o,humanoid=h,rootPart=r,head=hd})end
+        end
+    end
+    return l
+end
+
+local function bK(n,w,m,p)
+    if not n.humanoid or n.humanoid.Health<=0 or not n.rootPart or not n.rootPart.Parent then return end
+    local h=n.model:FindFirstChild("Head")or n.head if not h then return end
+    local hp=h.Position local fp=p.Position
+    local hn=(fp-hp).Unit local ep=hp+(hp-fp).Unit*5
+    if RM.OnHit then pcall(function()RM.OnHit:FireServer({{hitPos=hp,targetRoot=n.rootPart,humanoid=n.humanoid,hitPart=h,hitNormal=hn}},{bulletHoleSize=0.65,tracerSpeed=320,tracers=true,muzzleChance=10})end)end
+    if RM.Fire then pcall(function()RM.Fire:FireServer(w,fp,m,{hits={hp}},{bulletHoleSize=0.65,tracerSpeed=320,tracers=true,muzzleChance=10},ep)end)end
+end
+
+task.spawn(function()
+    while task.wait()do
+        pcall(function()
+            if not S.AKG and not S.AKL then return end
+            local w=gW()if not w then nt("Auto Kill Error","No weapon equipped",7,"err_nowep")return end
+            local m=gM(w)if not m then nt("Auto Kill Error","No Muzzle part",7,"err_nomuzzle")return end
+            local p=gR()if not p then return end
+            if not RM.OnHit or not RM.Fire then gRem()if not RM.OnHit and not RM.Fire then return end end
+            if S.AKL then
+                local l=gN(true)
+                if #l==0 then nt("Lancelot Nil","No live Lancelot found",7,"err_nolance")
+                else for _,n in ipairs(l)do if not S.AKL then break end for _=1,S.BD do if n.humanoid.Health<=0 then break end bK(n,w,m,p)end end end
+            end
+            if S.AKG then for _,n in ipairs(gN(false))do if not S.AKG then break end for _=1,S.BD do if n.humanoid.Health<=0 then break end bK(n,w,m,p)end end end
+        end)
+    end
+end)
+
+LP.PlayerGui.ChildAdded:Connect(function(c)
+    if c.Name=="Lockpicking"and S.AL then
+        pcall(function()
+            task.wait(0.1)
+            local bp=c:FindFirstChild("BodyPart",true)local fe=c:FindFirstChild("FinishEvent",true)
+            if bp and bp.Value and fe then
+                fe:FireServer(bp.Value)task.wait(0.1)c:Destroy()
+                local ch=LP.Character
+                if ch then local h=ch:FindFirstChildOfClass("Humanoid")local r=ch:FindFirstChild("HumanoidRootPart")if h then h.WalkSpeed=16 h.JumpPower=50 end if r then r.Anchored=false end end
+                nt("Auto Lockpick","Crate unlocked")
+            end
+        end)
+    end
+end)
+
+local function sH()nt("Server Hop","Teleporting...")task.wait(0.5)pcall(function()TS:Teleport(game.PlaceId,LP)end)end
+
+local CC=CFrame.new(1904.15137,412.577454,-144.753845,0.61202544,-1.58314698e-11,-0.790838063,3.50849775e-12,1,-1.73033914e-11,0.790838063,7.81546182e-12,0.61202544)
+local cS=nil
+
+-- ===== LOADING SCREEN =====
+local LG=Instance.new("ScreenGui",CG)LG.Name="BBL"LG.ResetOnSpawn=false LG.DisplayOrder=99999
+local ld=Instance.new("Frame",LG)ld.Size=UDim2.new(0,300,0,130)ld.Position=UDim2.new(0.5,-150,0.5,-65)ld.BackgroundColor3=Hdr ld.BorderSizePixel=0
+Instance.new("UICorner",ld).CornerRadius=UDim.new(0,16)
+local ldStroke=Instance.new("UIStroke",ld)ldStroke.Color=Ac ldStroke.Thickness=1.5
+local lgGrad=Instance.new("UIGradient",ld)
+lgGrad.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(24,24,32)),ColorSequenceKeypoint.new(1,Color3.fromRGB(14,14,20))})
+lgGrad.Rotation=90
+local topBar=Instance.new("Frame",ld)topBar.Size=UDim2.new(1,-32,0,2)topBar.Position=UDim2.new(0,16,0,0)topBar.BackgroundColor3=Ac topBar.BorderSizePixel=0
+Instance.new("UICorner",topBar).CornerRadius=UDim.new(0,2)
+local spin=Instance.new("Frame",ld)spin.Size=UDim2.new(0,10,0,10)spin.Position=UDim2.new(0,20,0,20)spin.BackgroundColor3=Ac spin.BorderSizePixel=0
+Instance.new("UICorner",spin).CornerRadius=UDim.new(0,2)
+local ltL=Instance.new("TextLabel",ld)ltL.Size=UDim2.new(1,-60,0,24)ltL.Position=UDim2.new(0,38,0,14)ltL.BackgroundTransparency=1 ltL.Font=Enum.Font.GothamBlack ltL.TextSize=17 ltL.TextColor3=Grn ltL.Text="SECURITY CHECK"ltL.TextXAlignment=Enum.TextXAlignment.Left
+local pill=Instance.new("Frame",ld)pill.Size=UDim2.new(0,90,0,18)pill.Position=UDim2.new(0.5,-45,0,56)pill.BackgroundColor3=Color3.fromRGB(30,40,34)pill.BorderSizePixel=0
+Instance.new("UICorner",pill).CornerRadius=UDim.new(0,9)
+Instance.new("UIStroke",pill).Color=Grn
+local pillTx=Instance.new("TextLabel",pill)pillTx.Size=UDim2.new(1,0,1,0)pillTx.BackgroundTransparency=1 pillTx.Font=Enum.Font.GothamBold pillTx.TextSize=10 pillTx.TextColor3=Grn pillTx.Text="SCANNING"
+local lsL=Instance.new("TextLabel",ld)lsL.Size=UDim2.new(1,-40,0,16)lsL.Position=UDim2.new(0,20,0,82)lsL.BackgroundTransparency=1 lsL.Font=Enum.Font.GothamMedium lsL.TextSize=10 lsL.TextColor3=Sb lsL.TextXAlignment=Enum.TextXAlignment.Left lsL.Text="Finding staff or mods..."
+local pct=Instance.new("TextLabel",ld)pct.Size=UDim2.new(0,44,0,16)pct.Position=UDim2.new(1,-64,0,82)pct.BackgroundTransparency=1 pct.Font=Enum.Font.GothamBlack pct.TextSize=10 pct.TextColor3=Ac pct.TextXAlignment=Enum.TextXAlignment.Right pct.Text="0%"
+local bB=Instance.new("Frame",ld)bB.Size=UDim2.new(1,-40,0,6)bB.Position=UDim2.new(0,20,0,106)bB.BackgroundColor3=Color3.fromRGB(36,36,44)bB.BorderSizePixel=0
+Instance.new("UICorner",bB).CornerRadius=UDim.new(0,3)
+local bF=Instance.new("Frame",bB)bF.Size=UDim2.new(0,0,1,0)bF.BackgroundColor3=Ac bF.BorderSizePixel=0
+Instance.new("UICorner",bF).CornerRadius=UDim.new(0,3)
+local shimmer=Instance.new("Frame",bF)shimmer.Size=UDim2.new(0,40,1,0)shimmer.Position=UDim2.new(0,-40,0,0)shimmer.BackgroundColor3=Color3.fromRGB(255,255,255)shimmer.BackgroundTransparency=0.7 shimmer.BorderSizePixel=0
+Instance.new("UICorner",shimmer).CornerRadius=UDim.new(0,3)
+
+-- animations
+task.spawn(function()while spin and spin.Parent do spin.Rotation=spin.Rotation+6 R.RenderStepped:Wait()end end)
+task.spawn(function()while pillTx and pillTx.Parent do T:Create(pillTx,TweenInfo.new(0.6),{TextTransparency=0.5}):Play()task.wait(0.6)T:Create(pillTx,TweenInfo.new(0.6),{TextTransparency=0}):Play()task.wait(0.6)end end)
+task.spawn(function()while shimmer and shimmer.Parent do shimmer.Position=UDim2.new(0,-40,0,0)T:Create(shimmer,TweenInfo.new(1.2,Enum.EasingStyle.Linear),{Position=UDim2.new(1,40,0,0)}):Play()task.wait(1.2)end end)
+task.spawn(function()while ldStroke and ld.Parent do ldStroke.Color=Color3.fromHSV((tick()*0.25)%1,0.7,1)R.RenderStepped:Wait()end end)
+
+-- ===== MAIN UI =====
+local sg=Instance.new("ScreenGui")sg.Name="BUI"sg.ResetOnSpawn=false sg.Parent=CG
+local mb=Instance.new("Frame",sg)mb.Size=UDim2.new(0,150,0,28)mb.Position=UDim2.new(0.5,-75,0.5,-14)mb.BackgroundColor3=Pn mb.BorderSizePixel=0 mb.Active=true mb.Draggable=true mb.Visible=false
+Instance.new("UICorner",mb).CornerRadius=UDim.new(0,8)
+local mbStroke=Instance.new("UIStroke",mb)mbStroke.Color=Ac
+task.spawn(function()while mbStroke and mb.Parent do mbStroke.Color=Color3.fromHSV((tick()*0.25)%1,0.7,1)R.RenderStepped:Wait()end end)
+local ml=Instance.new("TextLabel",mb)ml.Size=UDim2.new(1,-36,1,0)ml.Position=UDim2.new(0,12,0,0)ml.BackgroundTransparency=1 ml.Font=Enum.Font.GothamBlack ml.TextSize=11 ml.TextColor3=Tx ml.TextXAlignment=Enum.TextXAlignment.Left ml.Text="BACKROOMS"
+local rb=Instance.new("TextButton",mb)rb.Size=UDim2.new(0,20,0,20)rb.Position=UDim2.new(1,-25,0.5,-10)rb.BackgroundColor3=Bt rb.TextColor3=Ac rb.Font=Enum.Font.GothamBold rb.TextSize=13 rb.Text="+"
+Instance.new("UICorner",rb).CornerRadius=UDim.new(0,4)
+
+local fr=Instance.new("Frame",sg)fr.Size=UDim2.new(0,400,0,230)fr.Position=UDim2.new(0.5,-200,0.5,-115)fr.BackgroundColor3=Color3.fromRGB(18,18,22)fr.BorderSizePixel=0 fr.Active=true fr.Draggable=true fr.Visible=false
+Instance.new("UICorner",fr).CornerRadius=UDim.new(0,12)
+local frStroke=Instance.new("UIStroke",fr)frStroke.Color=Ac frStroke.Thickness=1.5
+task.spawn(function()while frStroke and fr.Parent do frStroke.Color=Color3.fromHSV((tick()*0.25)%1,0.7,1)R.RenderStepped:Wait()end end)
+local frGrad=Instance.new("UIGradient",fr)
+frGrad.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(22,22,28)),ColorSequenceKeypoint.new(1,Color3.fromRGB(12,12,18))})
+frGrad.Rotation=90
+
+local ca=Instance.new("Frame",fr)ca.Size=UDim2.new(1,0,1,-38)ca.Position=UDim2.new(0,0,0,38)ca.BackgroundTransparency=1 ca.ClipsDescendants=true ca.ZIndex=1
+local sc=Instance.new("ScrollingFrame",ca)sc.Size=UDim2.new(1,0,1,0)sc.Position=UDim2.new(0,0,0,0)sc.BackgroundTransparency=1 sc.BorderSizePixel=0 sc.CanvasSize=UDim2.new(0,0,0,700)sc.ScrollBarThickness=3 sc.ScrollBarImageColor3=Ac sc.ScrollBarImageTransparency=0.5 sc.ScrollingDirection=Enum.ScrollingDirection.Y sc.Active=true sc.ZIndex=1
+
+local hd=Instance.new("Frame",fr)hd.Size=UDim2.new(1,0,0,38)hd.BackgroundColor3=Pn hd.BorderSizePixel=0 hd.ZIndex=10
+Instance.new("UICorner",hd).CornerRadius=UDim.new(0,12)
+local hdGrad=Instance.new("UIGradient",hd)
+hdGrad.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(28,28,36)),ColorSequenceKeypoint.new(1,Color3.fromRGB(18,18,24))})
+local hf=Instance.new("Frame",hd)hf.Size=UDim2.new(1,0,0,12)hf.Position=UDim2.new(0,0,1,-12)hf.BackgroundColor3=Pn hf.BorderSizePixel=0 hf.ZIndex=11
+local ha=Instance.new("Frame",hd)ha.Size=UDim2.new(0,3,0,20)ha.Position=UDim2.new(0,12,0,9)ha.BackgroundColor3=Ac ha.BorderSizePixel=0 ha.ZIndex=12
+Instance.new("UICorner",ha).CornerRadius=UDim.new(0,2)
+local hDot=Instance.new("Frame",hd)hDot.Size=UDim2.new(0,6,0,6)hDot.Position=UDim2.new(0,24,0.5,-3)hDot.BackgroundColor3=Grn hDot.BorderSizePixel=0 hDot.ZIndex=12
+Instance.new("UICorner",hDot).CornerRadius=UDim.new(1,0)
+task.spawn(function()while hDot and hDot.Parent do T:Create(hDot,TweenInfo.new(0.8),{BackgroundTransparency=0.5}):Play()task.wait(0.8)T:Create(hDot,TweenInfo.new(0.8),{BackgroundTransparency=0}):Play()task.wait(0.8)end end)
+local tt=Instance.new("TextLabel",hd)tt.Size=UDim2.new(1,-110,1,0)tt.Position=UDim2.new(0,36,0,0)tt.BackgroundTransparency=1 tt.Font=Enum.Font.GothamBlack tt.TextSize=13 tt.TextColor3=Tx tt.TextXAlignment=Enum.TextXAlignment.Left tt.Text="BACKROOMS HUB"tt.ZIndex=12
+task.spawn(function()while tt and tt.Parent do tt.TextColor3=Color3.fromHSV((tick()*0.15)%1,0.6,1)R.RenderStepped:Wait()end end)
+local mnB=Instance.new("TextButton",hd)mnB.Size=UDim2.new(0,22,0,22)mnB.Position=UDim2.new(1,-54,0,8)mnB.BackgroundColor3=Bt mnB.TextColor3=Sb mnB.Font=Enum.Font.GothamBold mnB.TextSize=13 mnB.Text="-"mnB.ZIndex=12
+Instance.new("UICorner",mnB).CornerRadius=UDim.new(0,5)
+local clB=Instance.new("TextButton",hd)clB.Size=UDim2.new(0,22,0,22)clB.Position=UDim2.new(1,-28,0,8)clB.BackgroundColor3=Bt clB.TextColor3=Sb clB.Font=Enum.Font.GothamBold clB.TextSize=13 clB.Text="×"clB.ZIndex=12
+Instance.new("UICorner",clB).CornerRadius=UDim.new(0,5)
+
+local function sL(t,y)
+    local w=Instance.new("Frame",sc)w.Size=UDim2.new(1,-24,0,20)w.Position=UDim2.new(0,12,0,y)w.BackgroundTransparency=1 w.ZIndex=2
+    local b=Instance.new("Frame",w)b.Size=UDim2.new(0,2,0,12)b.Position=UDim2.new(0,0,0,4)b.BackgroundColor3=Ac b.BorderSizePixel=0 b.ZIndex=3
+    Instance.new("UICorner",b).CornerRadius=UDim.new(0,2)
+    task.spawn(function()while b and b.Parent do b.BackgroundColor3=Color3.fromHSV((tick()*0.25)%1,0.7,1)R.RenderStepped:Wait()end end)
+    local l=Instance.new("TextLabel",w)l.Size=UDim2.new(1,-10,1,0)l.Position=UDim2.new(0,8,0,0)l.BackgroundTransparency=1 l.Font=Enum.Font.GothamBlack l.TextSize=11 l.TextColor3=Tx l.TextXAlignment=Enum.TextXAlignment.Left l.Text=string.upper(t)l.ZIndex=3
+end
+local function iL(t,y)local l=Instance.new("TextLabel",sc)l.Size=UDim2.new(1,-24,0,14)l.Position=UDim2.new(0,12,0,y)l.BackgroundTransparency=1 l.Font=Enum.Font.Gotham l.TextSize=10 l.TextColor3=Sb l.TextXAlignment=Enum.TextXAlignment.Left l.Text=t l.TextWrapped=true l.ZIndex=2 end
+local function mB(t,y)
+    local b=Instance.new("TextButton",sc)b.Size=UDim2.new(1,-24,0,30)b.Position=UDim2.new(0,12,0,y)b.BackgroundColor3=Bt b.TextColor3=Tx b.Font=Enum.Font.GothamBold b.TextSize=11 b.Text="  "..t b.TextXAlignment=Enum.TextXAlignment.Left b.ZIndex=3
+    Instance.new("UICorner",b).CornerRadius=UDim.new(0,7)
+    local grad=Instance.new("UIGradient",b)
+    grad.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(38,38,46)),ColorSequenceKeypoint.new(1,Color3.fromRGB(28,28,36))})
+    local pd=Instance.new("Frame",b)pd.Size=UDim2.new(0,3,1,-10)pd.Position=UDim2.new(0,0,0,5)pd.BackgroundColor3=Ac pd.BorderSizePixel=0 pd.BackgroundTransparency=1 pd.ZIndex=4
+    Instance.new("UICorner",pd).CornerRadius=UDim.new(0,2)
+    local s=Instance.new("UIStroke",b)s.Color=St s.Thickness=1
+    return b,s,pd
+end
+local function sB(b,s,pd,on,t1,t2)b.Text="  "..(on and t1 or t2)b.BackgroundColor3=on and On or Bt s.Color=on and Aon or St pd.BackgroundTransparency=on and 0 or 1 end
+
+local y=10
+sL("Combat Features",y)y=y+24
+local ia,ias,iap=mB("Inf Ammo: OFF",y)y=y+34
+iL("Reload your weapons before toggling.",y)y=y+22
+local kg,kgs,kgp=mB("Auto Kill General: OFF",y)y=y+34
+iL("Auto kill any enemies in workspace.",y)y=y+22
+local kl,kls,klp=mB("Auto Kill Lancelot: OFF",y)y=y+34
+iL("Experimental feature.",y)y=y+30
+sL("Utilities",y)y=y+24
+local al,als,alp=mB("Auto Lockpick: OFF",y)y=y+34
+iL("Skips the lockpick minigame.",y)y=y+22
+local bb=mB("Buy Lockpick",y)y=y+34
+iL("Buys a lockpick.",y)y=y+22
+local hb=mB("Server Hop",y)y=y+34
+iL("Hops onto a different server.",y)y=y+30
+sL("Movement",y)y=y+24
+local tc,tcs,tcp=mB("Contraband Room: OFF",y)y=y+34
+iL("Teleports to Contraband Room.",y)y=y+14
+iL("Warning: This feature will ban you and alert moderators.",y)y=y+14
+iL("Please use this on an alt account and transfer items to your main.",y)y=y+30
+sL("Credits",y)y=y+24
+local cr=Instance.new("TextLabel",sc)cr.Size=UDim2.new(1,-24,0,30)cr.Position=UDim2.new(0,12,0,y)cr.BackgroundTransparency=1 cr.Font=Enum.Font.GothamBlack cr.TextSize=14 cr.TextColor3=Color3.fromRGB(255,255,255)cr.TextXAlignment=Enum.TextXAlignment.Center cr.Text="Credits To Max And Bread."cr.ZIndex=2
+y=y+40
+sc.CanvasSize=UDim2.new(0,0,0,y)
+task.spawn(function()while cr and cr.Parent do cr.TextColor3=Color3.fromHSV((tick()*0.3)%1,1,1)R.RenderStepped:Wait()end end)
+
+ia.MouseButton1Click:Connect(function()S.IA=not S.IA sB(ia,ias,iap,S.IA,"Inf Ammo: ON","Inf Ammo: OFF")if S.IA then infA()end end)
+kg.MouseButton1Click:Connect(function()S.AKG=not S.AKG if S.AKG and not S.IA then S.IA=true infA()sB(ia,ias,iap,true,"Inf Ammo: ON","Inf Ammo: OFF")end sB(kg,kgs,kgp,S.AKG,"Auto Kill General: ON","Auto Kill General: OFF")nt("Auto Kill General",S.AKG and "Enabled"or"Disabled")end)
+kl.MouseButton1Click:Connect(function()S.AKL=not S.AKL if S.AKL and not S.IA then S.IA=true infA()sB(ia,ias,iap,true,"Inf Ammo: ON","Inf Ammo: OFF")end sB(kl,kls,klp,S.AKL,"Auto Kill Lancelot: ON","Auto Kill Lancelot: OFF")nt("Auto Kill Lancelot",S.AKL and "Enabled"or"Disabled")end)
+al.MouseButton1Click:Connect(function()S.AL=not S.AL sB(al,als,alp,S.AL,"Auto Lockpick: ON","Auto Lockpick: OFF")nt("Auto Lockpick",S.AL and "Enabled"or"Disabled")end)
+bb.MouseButton1Click:Connect(function()gRem()if RM.ShopProcess then pcall(function()RM.ShopProcess:FireServer("Armory","Lockpick")end)bb.Text="  Bought!"nt("Buy Lockpick","Sent to Armory")task.delay(1.2,function()if bb and bb.Parent then bb.Text="  Buy Lockpick"end end)else nt("Buy Lockpick","Remote missing",7,"err_noshop")end end)
+hb.MouseButton1Click:Connect(sH)
+
+tc.MouseButton1Click:Connect(function()
+    local c=LP.Character local r=c and c:FindFirstChild("HumanoidRootPart")if not r then return end
+    if not S.IC then
+        if cS==nil then cS=r.CFrame end
+        r.CFrame=CC S.IC=true sB(tc,tcs,tcp,true,"Contraband Room: ON","Contraband Room: OFF")nt("Contraband Room","Teleported")
+    else
+        if cS then r.CFrame=cS end
+        S.IC=false sB(tc,tcs,tcp,false,"Contraband Room: ON","Contraband Room: OFF")nt("Contraband Room","Returned")
+    end
+end)
+
+mnB.MouseButton1Click:Connect(function()
+    local e=UDim2.new(fr.Position.X.Scale,fr.Position.X.Offset,fr.Position.Y.Scale,fr.Position.Y.Offset+60)
+    T:Create(fr,TweenInfo.new(0.25,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Position=e,BackgroundTransparency=1}):Play()
+    mb.Position=UDim2.new(fr.Position.X.Scale,fr.Position.X.Offset,fr.Position.Y.Scale,fr.Position.Y.Offset)mb.BackgroundTransparency=1 mb.
